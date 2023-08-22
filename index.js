@@ -5,7 +5,7 @@ const app = express();
 
 // - Creates route handler and associates it with the given route, '/'.
 app.get('/', (req, res) => {
-  res.send({ hi: 'there' });
+  res.send({ hello: 'Test' });
 });
 
 const PORT = process.env.PORT || 5000;
