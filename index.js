@@ -1,12 +1,11 @@
 const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new GoogleStrategy());
 
 // - Creates Express application
 const app = express();
-
-// - Creates route handler and associates it with the given route, '/'.
-app.get('/', (req, res) => {
-  res.send({ hello: 'Test' });
-});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
