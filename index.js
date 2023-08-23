@@ -3,6 +3,9 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./config/keys');
 
+// - Creates Express application
+const app = express();
+
 passport.use(
   new GoogleStrategy(
     {
@@ -16,8 +19,13 @@ passport.use(
   )
 );
 
-// - Creates Express application
-const app = express();
+// - Route handler to handle GET requests to '/auth/google' route
+app.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  })
+);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
