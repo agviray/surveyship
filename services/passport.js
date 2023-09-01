@@ -16,12 +16,21 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     (accessToken, refreshToken, profile, done) => {
-      // - Create and save a new instance of a user after a user comes
-      //   back from the Google OAuth flow.
-      // - User instance data is saved to our MongoDB database.
-      new User({
-        googleId: profile.id,
-      }).save();
+      // - Here, the user returns from the Google OAuth flow with their
+      //   Google ID in hand.
+      // - Now we check to see if their Google ID exists in the database.
+      User.findOne({ googleId: profile.id }).then((existingUser) => {
+        if (existingUser) {
+          // - We already have a record with the given profile ID, so
+          //   we can proceed to do something with our existing user.
+        } else {
+          //  - We don't have a user record with this ID, so make
+          //    a new record and save it in the database!
+          new User({
+            googleId: profile.id,
+          }).save();
+        }
+      });
     }
   )
 );
