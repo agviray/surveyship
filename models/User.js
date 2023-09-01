@@ -7,6 +7,6 @@ const userSchema = new Schema({
 });
 
 // - Create a model class
-//   - First argument: 'users'
+//   - First argument: 'users' describes the collection, in this case, the users collection.
 //   - Second argument: The schema that we are using for a given user.
 mongoose.model('users', userSchema);
