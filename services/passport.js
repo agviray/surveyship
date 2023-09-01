@@ -23,12 +23,15 @@ passport.use(
         if (existingUser) {
           // - We already have a record with the given profile ID, so
           //   we can proceed to do something with our existing user.
+          done(null, existingUser);
         } else {
           //  - We don't have a user record with this ID, so make
           //    a new record and save it in the database!
           new User({
             googleId: profile.id,
-          }).save();
+          })
+            .save()
+            .then((user) => done(null, user));
         }
       });
     }
