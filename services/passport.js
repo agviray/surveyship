@@ -14,6 +14,17 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// - Takes id from cookie (this id refers to the id that was previously passed to the client
+//   in form of a cookie), and turns it back into a user model.
+// - id is the same value as the user.id value from the passport.serializeUser(...) step.
+passport.deserializeUser((id, done) => {
+  // - Search for the desired user within all users in our Mongo database.
+  // - Once desired user found, call the done(...) method to return a user model.
+  User.findById(id).then((user) => {
+    done(null, user);
+  });
+});
+
 passport.use(
   new GoogleStrategy(
     {
