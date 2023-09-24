@@ -33,7 +33,7 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true,
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // - Here, the user returns from the Google OAuth flow with their
       //   Google ID in hand.
       // - The idea here is to return a user record--but before doing so,
@@ -42,23 +42,20 @@ passport.use(
       //   and added to the Mongo database).
       // - Ultimately, a user record will be returned whether it's a new user record or
       //   an existing one.
-      User.findOne({ googleId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          // - We already have a record with the given profile ID, so
-          //   we can proceed to do something with our existing user.
-          done(null, existingUser);
-        } else {
-          //  - We don't have a user record with this ID, so make
-          //    a new record and save it in the database.
-          // - Now with this new user record created and saved, we can proceed to do
-          //   something with it.
-          new User({
-            googleId: profile.id,
-          })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+      if (existingUser) {
+        // - We already have a record with the given profile ID, so
+        //   we can proceed to do something with our existing user.
+        return done(null, existingUser);
+      }
+      //  - We don't have a user record with this ID, so make
+      //    a new record and save it in the database.
+      // - Now with this new user record created and saved, we can proceed to do
+      //   something with it.
+      const user = await new User({
+        googleId: profile.id,
+      }).save();
+      done(null, user);
     }
   )
 );
