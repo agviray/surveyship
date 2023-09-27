@@ -1,3 +1,4 @@
+import 'materialize-css/dist/css/materialize.min.css'; // - Import Materialize CSS
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
