@@ -11,6 +11,7 @@ const SurveyNew = () => <h2>SurveyNew</h2>;
 const Landing = () => <h2>Landing</h2>;
 
 class App extends Component {
+  // - Check if user is logged in or out on intial render of application.
   componentDidMount() {
     this.props.fetchUser();
   }
