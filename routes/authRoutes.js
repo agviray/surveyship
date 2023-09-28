@@ -22,9 +22,10 @@ module.exports = (app) => {
   );
 
   // - Log user out of application when they visit provided string route.
+  // - Redirect user to / path when user logs out of app.
   app.get('/api/logout', (req, res) => {
     req.logout();
-    res.send(req.user);
+    res.redirect('/');
   });
 
   // - Route handler to handle case where user visits string route shown below.
