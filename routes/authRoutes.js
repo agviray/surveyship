@@ -12,7 +12,14 @@ module.exports = (app) => {
   );
 
   // - Route handler to handle case where user is sent to/visits '/auth/google/callback'
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  // - Redirect user to /surveys when they're successfully logged into app.
+  app.get(
+    '/auth/google/callback',
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+  );
 
   // - Log user out of application when they visit provided string route.
   app.get('/api/logout', (req, res) => {
