@@ -3,9 +3,15 @@ const keys = require('../config/keys');
 const stripe = require('stripe')(keys.stripeSecretKey);
 
 module.exports = (app) => {
-  app.post('/api/stripe', (req, res) => {
-    // - Testing if received token from Stripe (token received from user payment for credits via Stripe checkout form)
-    //   is being correctly communicated to Express server.
-    console.log(req.body);
+  app.post('/api/stripe', async (req, res) => {
+    // - Create charge object
+    const charge = await stripe.charges.create({
+      amount: 500,
+      currency: 'usd',
+      description: '$5.00 for 5 credits',
+      source: req.body.id,
+    });
+
+    console.log(charge);
   });
 };
