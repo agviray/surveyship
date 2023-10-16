@@ -28,6 +28,7 @@ app.use(passport.session());
 // - Ensure route handlers are useable by making
 //   app accessible to the route handlers.
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
