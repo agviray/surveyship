@@ -5,3 +5,10 @@ export const fetchUser = () => async (dispatch) => {
   const res = await axios.get('/api/current_user');
   dispatch({ type: FETCH_USER, payload: res.data });
 };
+
+// - Takes received token from Stripe (token received from Stripe upon successful payment
+// submission by user via Stripe Checkout component), and sends it off for backend use.
+export const handleToken = (token) => async (dispatch) => {
+  const res = await axios.post('/api/stripe', token);
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
