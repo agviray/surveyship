@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
 require('./services/passport');
@@ -12,7 +13,10 @@ mongoose.connect(keys.mongoURI);
 // - Creates Express application
 const app = express();
 
-// - Enable cookie usage with Express.
+// - Express middlewares are wired to Express via app.use(...) call.
+// - bodyParser middleware parses incoming requests sent to Express.
+app.use(bodyParser.json());
+// - cookieSession middlware enables cookie usage with Express.
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
