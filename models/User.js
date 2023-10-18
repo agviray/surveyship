@@ -4,6 +4,7 @@ const { Schema } = mongoose; // Destructure the Schema property from Mongoose.
 // - Defines the properties that a user record (on the MongoDB database) will have.
 const userSchema = new Schema({
   googleId: String,
+  credits: { type: Number, default: 0 },
 });
 
 // - Create a model class
