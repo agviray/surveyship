@@ -1,9 +1,15 @@
 const keys = require('../config/keys');
 // - Must require (aka "import") stripe library by following syntax specifically mentioned in Stripe library docs.
 const stripe = require('stripe')(keys.stripeSecretKey);
+const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = (app) => {
-  app.post('/api/stripe', async (req, res) => {
+  // - requireLogin is a "custom middleware" that we wrote to
+  //   check if a user is logged in/authenticated.
+  // - requireLogin is called automatically before running any
+  //   route handler logic here.
+  // - requireLogin is called with req, res, and a next function as arguments.
+  app.post('/api/stripe', requireLogin, async (req, res) => {
     // - Create charge after payment was finalized.
     const charge = await stripe.charges.create({
       amount: 500,
