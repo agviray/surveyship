@@ -1,3 +1,6 @@
+// *** About this billingRoutes.js file ***
+// - Contains route handlers involved with billing.
+// *************************************************
 const keys = require('../config/keys');
 // - Must require (aka "import") stripe library by following syntax specifically mentioned in Stripe library docs.
 const stripe = require('stripe')(keys.stripeSecretKey);

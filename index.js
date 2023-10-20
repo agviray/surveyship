@@ -34,6 +34,7 @@ app.use(passport.session());
 //   app accessible to the route handlers.
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./api/surveyRoutes')(app);
 
 // - Configuration to ensure that Express behaves correctly when it's in a production environment.
 // - Will only run when in production (in Heroku)

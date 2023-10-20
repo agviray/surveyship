@@ -1,4 +1,6 @@
 // *** About this authRoutes.js file ***
+// - Contains all route handlers involved with
+//   authenticating the user.
 // ***********************************************
 const passport = require('passport');
 
