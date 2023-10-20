@@ -2,12 +2,14 @@
 // - Contains all route handlers involved with
 //   surveys.
 // ***********************************************
-const requireLogin = require('../middlewares/requireLogin'); // - Middlware to ensure user is logged in.
+
+// - Custom middlware to ensure user is logged in.
+const requireLogin = require('../middlewares/requireLogin');
+// - Custom middlware to ensure user has enough credits to send a survey.
+const requireCredits = require('../middlewares/requireCredits');
 
 module.exports = (app) => {
-  app.post('/api/surveys', requireLogin, (req, res) => {
-    // *** TODO ***
-    // - 1. Include some logic that checks if user has enough
-    //   credits to send out a survey.
+  app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+    // - Do something when user makes POST request to '/api/surveys'.
   });
 };
