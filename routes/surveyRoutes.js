@@ -10,6 +10,6 @@ const requireCredits = require('../middlewares/requireCredits');
 
 module.exports = (app) => {
   app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
-    // - Do something when user makes POST request to '/api/surveys'.
+    console.log(req.body);
   });
 };
