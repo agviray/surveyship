@@ -5,6 +5,7 @@
 const sgMail = require('@sendgrid/mail');
 const keys = require('../config/keys');
 
+sgMail.setApiKey(keys.sendGridKey);
 class Mailer {
   constructor({ subject, recipients }, content) {
     // - Create array of email addresses strings.
@@ -19,11 +20,12 @@ class Mailer {
       this.recipients = this.recipients[0];
       this.isMultiple = false;
     }
+
     // - Add object and key:value pairs to reference
     //   remainder of necessary email data.
     this.emails = {
       to: this.recipients,
-      from: 'no-reply@surveyship.com',
+      from: 'hello.surveyship@gmail.com',
       subject: subject,
       html: content,
       tracking_settings: {
@@ -34,7 +36,20 @@ class Mailer {
       },
       isMultiple: this.isMultiple,
     };
-    sgMail.setApiKey(keys.sendGridKey);
+  }
+
+  // - Send Mailer out to Sendgrid, to have it emailed
+  //   out to recipients.
+  async send() {
+    try {
+      if (!this.recipients.length) {
+        return null;
+      }
+      const response = await sgMail.send(this.emails);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

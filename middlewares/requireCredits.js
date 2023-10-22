@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   // - next will pass the request onto the next middleware if necessary.
 
   // - If the user does not have > 0 credits, then do not proceed to route handler and show error.
-  if (!req.user.credits < 1) {
+  if (req.user.credits < 1) {
     // - Research HTTP status code definitions to see why we're using the 403 code.
     return res.status(403).send({ error: 'Not enough credits!' });
   }
