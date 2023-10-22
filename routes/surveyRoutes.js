@@ -8,7 +8,8 @@ const Survey = mongoose.model('surveys');
 const requireLogin = require('../middlewares/requireLogin');
 // - Custom middlware to ensure user has enough credits to send a survey.
 const requireCredits = require('../middlewares/requireCredits');
-
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+const Mailer = require('../services/Mailer');
 module.exports = (app) => {
   app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
     // ****************************************************************************
@@ -36,5 +37,8 @@ module.exports = (app) => {
       _user: req.user.id,
       dateSent: Date.now(),
     });
+
+    // - Send email here!
+    const mailer = new Mailer(survey, surveyTemplate(survey));
   });
 };
