@@ -11,6 +11,10 @@ const requireCredits = require('../middlewares/requireCredits');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Mailer = require('../services/Mailer');
 module.exports = (app) => {
+  app.get('/api/surveys/thanks', (req, res) => {
+    res.send('Thanks for voting!');
+  });
+
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     // ****************************************************************************
     // ****************************************************************************
