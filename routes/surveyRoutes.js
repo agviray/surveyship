@@ -38,7 +38,7 @@ module.exports = (app) => {
       dateSent: Date.now(),
     });
 
-    // - Send email here!
+    // - Send emails here!
     const mailer = new Mailer(survey, surveyTemplate(survey));
     await mailer.send(); // - Send emails out to recipients.
     await survey.save(); // - Save survey to database after emails sent.
@@ -50,5 +50,19 @@ module.exports = (app) => {
     // - Send back updated version of user model.
     // - Do this to have Header credits to be updated.
     res.send(user);
+    try {
+      await mailer.send(); // - Send emails out to recipients.
+      await survey.save(); // - Save survey to database after emails sent.
+      req.user.credtis -= 1; // - Subtract credit from total credits after email sent.
+      // - Initial user to have value of updated user.
+      // - Must set to variable in order to have a reference to
+      //   updated user.
+      const user = await req.user.save();
+      // - Send back updated version of user model.
+      // - Do this to have Header credits to be updated.
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
   });
 };
