@@ -11,7 +11,7 @@ const requireCredits = require('../middlewares/requireCredits');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Mailer = require('../services/Mailer');
 module.exports = (app) => {
-  app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
+  app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     // ****************************************************************************
     // ****************************************************************************
     // *** IMPORTANT ***
@@ -40,6 +40,15 @@ module.exports = (app) => {
 
     // - Send email here!
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    mailer.send();
+    await mailer.send(); // - Send emails out to recipients.
+    await survey.save(); // - Save survey to database after emails sent.
+    req.user.credits -= 1; // - Subtract credit from total credits after email sent.
+    // - Initial user to have value of updated user.
+    // - Must set to variable in order to have a reference to
+    //   updated user.
+    const user = await req.user.save();
+    // - Send back updated version of user model.
+    // - Do this to have Header credits to be updated.
+    res.send(user);
   });
 };
