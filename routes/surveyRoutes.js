@@ -48,7 +48,7 @@ module.exports = (app) => {
     try {
       await mailer.send(); // - Send emails out to recipients.
       await survey.save(); // - Save survey to database after emails sent.
-      req.user.credtis -= 1; // - Subtract credit from total credits after email sent.
+      req.user.credits -= 1; // - Subtract credit from total credits after email sent.
       // - Initial user to have value of updated user.
       // - Must set to variable in order to have a reference to
       //   updated user.
