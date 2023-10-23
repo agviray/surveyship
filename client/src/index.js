@@ -8,6 +8,11 @@ import reduxThunk from 'redux-thunk';
 import App from './components/App';
 import reducers from './reducers';
 
+// - Temporary code for testing email sending
+// - For development only. Delete later.
+import axios from 'axios';
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
