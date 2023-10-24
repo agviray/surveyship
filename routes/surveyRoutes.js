@@ -11,6 +11,8 @@ const requireCredits = require('../middlewares/requireCredits');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Mailer = require('../services/Mailer');
 module.exports = (app) => {
+  // - Send survey recipients to a Thank You page in our app, when they
+  //   click on a survey link in their email.
   app.get('/api/surveys/thanks', (req, res) => {
     res.send('Thanks for voting!');
   });
