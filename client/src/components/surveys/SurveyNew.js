@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SurveyForm from './SurveyForm';
 
 // - Shows SurveyForm and SurveyFormReview.
 // - Toggles between SurveyForm and SurveyFormReview.
@@ -6,7 +7,7 @@ class SurveyNew extends Component {
   render() {
     return (
       <div>
-        <h1>SurveyNew component!</h1>
+        <SurveyForm />
       </div>
     );
   }
