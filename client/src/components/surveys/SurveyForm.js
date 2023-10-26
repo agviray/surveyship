@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import SurveyField from './SurveyField';
 import { Link } from 'react-router-dom';
+import SurveyField from './SurveyField';
+import validateEmails from '../../utils/validateEmails';
 
 const FIELDS = [
   {
@@ -62,8 +63,8 @@ class SurveyForm extends Component {
 // - Validates the input values of our form fields.
 function validate(values) {
   const errors = {};
-  // - Add an error message to the errors object, for
-  //   the appropriate erroneous form field.
+  // - Validate emails.
+  errors.emails = validateEmails(values.emails || '');
   _.each(FIELDS, ({ name }) => {
     if (!values[name]) {
       errors[name] = 'You must provide a value.';
