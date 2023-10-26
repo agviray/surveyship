@@ -59,6 +59,21 @@ class SurveyForm extends Component {
   }
 }
 
+// - Validates the input values of our form fields.
+function validate(values) {
+  const errors = {};
+  // - Add an error message to the errors object, for
+  //   the appropriate erroneous form field.
+  _.each(FIELDS, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = 'You must provide a value.';
+    }
+  });
+
+  return errors;
+}
+
 export default reduxForm({
+  validate: validate,
   form: 'surveyForm',
 })(SurveyForm);
