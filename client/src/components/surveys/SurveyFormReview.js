@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // - Shows user their form inputs, for their review.
-const SurveyFormReview = ({ onCancel }) => {
+const SurveyFormReview = ({ onCancel, formValues }) => {
   return (
     <div>
-      <h3>Confirm your survey entries!</h3>
+      <h5>Confirm your survey entries!</h5>
+
       <button className="yellow darken-3 btn-flat" onClick={onCancel}>
         Back
       </button>
