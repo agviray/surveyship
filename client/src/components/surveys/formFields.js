@@ -14,6 +14,6 @@ export const formFields = [
   },
   {
     label: 'Recipient List',
-    name: 'emails',
+    name: 'recipients',
   },
 ];
