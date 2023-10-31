@@ -14,8 +14,8 @@ export const handleToken = (token) => async (dispatch) => {
 };
 
 // - Submit survey to be sent out to recipients.
-export const submitSurvey = (values) => async (dispatch) => {
+export const submitSurvey = (values, navigate) => async (dispatch) => {
   const res = await axios.post('/api/surveys', values);
-
+  navigate('/surveys');
   dispatch({ type: FETCH_USER, payload: res.data });
 };

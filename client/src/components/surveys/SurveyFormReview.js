@@ -1,11 +1,14 @@
 import _ from 'lodash';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { formFields } from './formFields';
 import * as actions from '../../actions';
 
 // - Shows user their form inputs, for their review.
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
+  const navigate = useNavigate();
+
   const reviewFields = _.map(formFields, ({ label, name }, index) => {
     return (
       <div key={index}>
@@ -26,7 +29,7 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey }) => {
         Back
       </button>
       <button
-        onClick={() => submitSurvey(formValues)}
+        onClick={() => submitSurvey(formValues, navigate)}
         className="green white-text btn-flat right"
       >
         Send Survey
