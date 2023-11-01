@@ -21,25 +21,27 @@ module.exports = (app) => {
     res.send('Thanks for voting!');
   });
 
+  // - Using Sendgrid's webhook to get recipient click data on a given survey.
   app.post('/api/surveys/webhooks', (req, res) => {
     // - Only extract click event that's related to the recipient's response.
-    const events = _.map(req.body, ({ email, url }) => {
-      const pathname = new URL(url).pathname;
-      const p = new Path('/api/surveys/:surveyId/:choice');
-      const match = p.test(pathname);
-      if (match) {
-        return {
-          email: email,
-          surveyId: match.surveyId,
-          choice: match.choice,
-        };
-      }
-    });
+    // - Also prevents click event registration of duplicate clicks on a survey.
+    const p = new Path('/api/surveys/:surveyId/:choice');
+    const events = _.chain(req.body)
+      .map(({ email, url }) => {
+        const match = p.test(new URL(url).pathname);
+        if (match) {
+          return {
+            email: email,
+            surveyId: match.surveyId,
+            choice: match.choice,
+          };
+        }
+      })
+      .compact()
+      .uniqBy('email', 'surveyId')
+      .value();
 
-    // - Prevents click event registration of duplicate clicks on a survey.
-    const compactEvents = _.compact(events);
-    const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId');
-    console.log(uniqueEvents);
+    console.log(events);
     res.send({});
   });
 
