@@ -23,17 +23,6 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
-    // ****************************************************************************
-    // ****************************************************************************
-    // *** IMPORTANT ***
-    // - Note that there are currently no values for the properties
-    //   shown in the object argument of new Survey({...}).
-    // - The frontend isn't making any requests to '/api/surveys' yet, so these
-    //   properties (title, subject, body, etc) will not have any values yet.
-    // - This is only to show what properties we are going to need/use
-    //   when we design our backend server.
-    // ****************************************************************************
-    // ****************************************************************************
     const { title, subject, body, recipients } = req.body;
     // - Create instance of a survey using our Survey model class.
     const survey = new Survey({
