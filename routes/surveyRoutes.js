@@ -26,7 +26,7 @@ module.exports = (app) => {
     // - Only extract click event that's related to the recipient's response.
     // - Also prevents click event registration of duplicate clicks on a survey.
     const p = new Path('/api/surveys/:surveyId/:choice');
-    const events = _.chain(req.body)
+    _.chain(req.body)
       .map(({ email, url }) => {
         const match = p.test(new URL(url).pathname);
         if (match) {
@@ -39,9 +39,27 @@ module.exports = (app) => {
       })
       .compact()
       .uniqBy('email', 'surveyId')
+      .each(({ surveyId, email, choice }) => {
+        // - Find and update exactly 1 record in the survey collection.
+        // - Use surveyId to find appropriate survey, that has a recipient with given email, who has not yet responded to the survey.
+        // - Once this survey is found, increment the survey's yes or no property as appropriate (depending on recipient's response),
+        //   then update the recipient's response as well.
+        Survey.updateOne(
+          {
+            _id: surveyId,
+            recipients: {
+              $elemMatch: { email: email, responded: false },
+            },
+          },
+          {
+            // - Properties to update.
+            $inc: { [choice]: 1 },
+            $set: { 'recipients.$.responded': true },
+            lastResponded: new Date(),
+          }
+        ).exec();
+      })
       .value();
-
-    console.log(events);
     res.send({});
   });
 
