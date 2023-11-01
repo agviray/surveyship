@@ -2,6 +2,9 @@
 // - Contains all route handlers involved with
 //   surveys.
 // ***********************************************
+const _ = require('lodash');
+const { Path } = require('path-parser');
+const { URL } = require('url');
 const mongoose = require('mongoose');
 const Survey = mongoose.model('surveys');
 // - Custom middlware to ensure user is logged in.
@@ -10,6 +13,7 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Mailer = require('../services/Mailer');
+
 module.exports = (app) => {
   // - Send survey recipients to a Thank You page in our app, when they
   //   click on a survey link in their email.
@@ -18,7 +22,24 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    console.log(req.body);
+    // - Only extract click event that's related to the recipient's response.
+    const events = _.map(req.body, ({ email, url }) => {
+      const pathname = new URL(url).pathname;
+      const p = new Path('/api/surveys/:surveyId/:choice');
+      const match = p.test(pathname);
+      if (match) {
+        return {
+          email: email,
+          surveyId: match.surveyId,
+          choice: match.choice,
+        };
+      }
+    });
+
+    // - Prevents click event registration of duplicate clicks on a survey.
+    const compactEvents = _.compact(events);
+    const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId');
+    console.log(uniqueEvents);
     res.send({});
   });
 
