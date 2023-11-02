@@ -15,6 +15,14 @@ const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const Mailer = require('../services/Mailer');
 
 module.exports = (app) => {
+  // - Get all surveys that the current logged in user has created.
+  app.get('/api/surveys', requireLogin, async (req, res) => {
+    // - Query to reach into survey collection, and pull out all created
+    //   surveys of current logged in user.
+    const surveys = await Survey.find({ _user: req.user.id });
+    res.send(surveys);
+  });
+
   // - Send survey recipients to a Thank You page in our app, when they
   //   click on a survey link in their email.
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
