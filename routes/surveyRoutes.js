@@ -18,8 +18,10 @@ module.exports = (app) => {
   // - Get all surveys that the current logged in user has created.
   app.get('/api/surveys', requireLogin, async (req, res) => {
     // - Query to reach into survey collection, and pull out all created
-    //   surveys of current logged in user.
-    const surveys = await Survey.find({ _user: req.user.id });
+    //   surveys of current logged in user (not including list of recipients).
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
     res.send(surveys);
   });
 
