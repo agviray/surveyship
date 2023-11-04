@@ -1,38 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
+import {
+  StyledWrapper,
+  StyledVideoWrapper,
+  StyledContent,
+} from './styles/Landing.styled';
 import oceanVideo from '../assets/calm-ocean-aerial.mp4';
-
-const StyledWrapper = styled.div`
-  position: relative;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const StyledVideoWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-
-  video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-const StyledContent = styled.div`
-  position: relative;
-  text-align: center;
-  color: white;
-`;
+import shipSvg from '../assets/images/ship.svg';
+import shipWave from '../assets/images/ship-wave.svg';
 
 const Landing = () => {
   return (
@@ -45,7 +19,10 @@ const Landing = () => {
       </StyledVideoWrapper>
       <StyledContent>
         <h1>SurveyShip</h1>
-        Collect feedback from users.
+        <span>Collect feedback from users.</span>
+        <span>
+          <img src={shipWave} alt="ship" />
+        </span>
       </StyledContent>
     </StyledWrapper>
   );
