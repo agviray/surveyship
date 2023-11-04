@@ -1,2 +1,45 @@
-# surveyship (work in progress)
-Full-stack application used to email surveys to multiple users. 
+# SurveyShip
+
+<em>SurveyShip</em> is a full stack application used to email surveys to multiple users. Built with MERN stack (MongoDB, Express, React, and Node).
+
+- Login with Google OAuth.
+- Create surveys that expect a "Yes" or "No" response.
+- Email the surveys to multiple people.
+- View your created surveys while waiting for responses from the recipients.
+- The "Yes" or "No" counters will update once a recipient responds.
+- Create and send another survey!
+
+## Built with
+
+- create-react-app
+
+- MongoDB Atlas + MongooseJS
+
+  - Used for database management.
+
+- NodeJS + ExpressJS
+
+  - Used to create backend API
+
+- Stripe API
+
+  - Used to simulate payment for survey credits.
+
+- Google OAuth
+
+  - Used for user authentication.
+
+- Sendgrid + Sendgrid webhooks
+
+  - Used to record and send survey recipient data to SurveyShip.
+
+- Redux
+
+  - Used to manage state.
+
+- Axios
+
+  - Handles requests made to the API.
+
+- Styled-Components
+  - Used for all styling.
