@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { StyledDashboard } from './styles/Dashboard.styled';
 import SurveyList from './surveys/SurveyList';
 
 const Dashboard = () => {
   return (
-    <div>
+    <StyledDashboard>
       <h1>Dashboard</h1>
       <SurveyList />
       <div className="fixed-action-btn">
@@ -12,7 +13,7 @@ const Dashboard = () => {
           <i className="material-icons">add</i>
         </Link>
       </div>
-    </div>
+    </StyledDashboard>
   );
 };
 
