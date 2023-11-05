@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Payments from './Payments';
-import { StyledNavbar } from './styles/Navbar.styled';
+import { StyledNavbar, StyledLogo } from './styles/Navbar.styled';
+import ship from '../assets/images/ship.svg';
 
 // Using class based component.
 class Navbar extends Component {
@@ -27,7 +28,9 @@ class Navbar extends Component {
             Credits: {this.props.auth.credits}
           </li>,
           <li key="3">
-            <a href="/api/logout">Logout</a>
+            <a href="/api/logout">
+              <span>Logout</span>
+            </a>
           </li>,
         ];
     }
@@ -37,15 +40,12 @@ class Navbar extends Component {
     return (
       <StyledNavbar>
         <div>
-          <Link
-            to={this.props.auth ? '/surveys' : '/'}
-            className="left brand-logo"
-          >
-            SurveyShip
+          <Link to={this.props.auth ? '/surveys' : '/'}>
+            <StyledLogo>
+              <img src={ship} alt="SurveyShip logo" />
+            </StyledLogo>
           </Link>
-          <ul id="nav-mobile" className="right">
-            {this.renderContent()}
-          </ul>
+          <ul>{this.renderContent()}</ul>
         </div>
       </StyledNavbar>
     );
