@@ -5,7 +5,6 @@ export const StyledSurveyCollection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-top: 3rem;
 `;
 
 export const StyledSurveyCard = styled.div`

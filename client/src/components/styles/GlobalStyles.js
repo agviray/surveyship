@@ -19,9 +19,12 @@ const GlobalStyles = createGlobalStyle`
   } */
 
   h1, h2, h3, h4 {
-    letter-spacing: 2px;
     margin: 0;
-   }
+  }
+
+  h1 {
+    padding-bottom: 3rem;
+  }
 
   ul {
     margin: 0;

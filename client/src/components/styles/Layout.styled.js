@@ -7,6 +7,13 @@ export const StyledLayout = styled.div`
     left: 0;
     right: 0;
     width: 100%;
+    max-width: 2000px;
+    margin: 0 auto;
     z-index: 999;
+  }
+  main {
+    padding: 6rem 1.25rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 `;
