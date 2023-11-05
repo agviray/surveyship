@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
 import GlobalStyles from './styles/GlobalStyles';
 import { StyledLayout } from './styles/Layout.styled';
-import Header from './Header';
+import Navbar from './Navbar';
 import Landing from './Landing';
 
 const Layout = ({ auth }) => {
@@ -12,7 +12,7 @@ const Layout = ({ auth }) => {
     return isLoggedIn ? (
       <>
         <header>
-          <Header />
+          <Navbar />
         </header>
         <main>
           <Outlet />

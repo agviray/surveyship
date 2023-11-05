@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Payments from './Payments';
+import { StyledNavbar } from './styles/Navbar.styled';
 
 // Using class based component.
-class Header extends Component {
+class Navbar extends Component {
   // - Check this.props.auth property, to determine the Header UI to display.
   // - Different UI to display depending on user's current login status.
   renderContent() {
@@ -34,8 +35,8 @@ class Header extends Component {
 
   render() {
     return (
-      <nav>
-        <div style={{ margin: '0 10px' }} className="nav-wrapper">
+      <StyledNavbar>
+        <div>
           <Link
             to={this.props.auth ? '/surveys' : '/'}
             className="left brand-logo"
@@ -46,7 +47,7 @@ class Header extends Component {
             {this.renderContent()}
           </ul>
         </div>
-      </nav>
+      </StyledNavbar>
     );
   }
 }
@@ -57,4 +58,4 @@ const mapStateToProps = ({ auth }) => {
   };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Navbar);

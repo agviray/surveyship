@@ -6,7 +6,7 @@ import {
   StyledSignInLink,
 } from './styles/Landing.styled';
 import oceanVideo from '../assets/calm-ocean-aerial.mp4';
-import shipSvg from '../assets/images/ship.svg';
+// import shipSvg from '../assets/images/ship.svg';
 import shipWave from '../assets/images/ship-wave.svg';
 
 const Landing = () => {
