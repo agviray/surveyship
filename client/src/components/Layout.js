@@ -1,18 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import { connect } from 'react-redux';
 import GlobalStyles from './styles/GlobalStyles';
 import { StyledLayout } from './styles/Layout.styled';
+import Header from './Header';
 import Landing from './Landing';
 
-const Layout = ({ children }) => {
+const Layout = ({ auth }) => {
+  // - Render content depending on user's logged in status.
+  const renderContent = (isLoggedIn) => {
+    return isLoggedIn ? (
+      <>
+        <header>
+          <Header />
+        </header>
+        <main>
+          <Outlet />
+        </main>
+      </>
+    ) : (
+      <Landing />
+    );
+  };
+
   return (
     <>
       <GlobalStyles />
-      <StyledLayout>
-        <Landing />
-        <main>{children}</main>
-      </StyledLayout>
+      <StyledLayout>{renderContent(auth)}</StyledLayout>
     </>
   );
 };
 
-export default Layout;
+const mapStateToProps = ({ auth }) => {
+  return {
+    auth: auth,
+  };
+};
+
+export default connect(mapStateToProps)(Layout);

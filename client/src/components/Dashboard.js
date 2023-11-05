@@ -6,7 +6,6 @@ import Header from './Header';
 const Dashboard = () => {
   return (
     <div>
-      <Header />
       <h1>Dashboard</h1>
       <SurveyList />
       <div className="fixed-action-btn">

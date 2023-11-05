@@ -7,6 +7,7 @@ export const StyledWrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 export const StyledVideoWrapper = styled.div`
   position: absolute;
   top: 0;
@@ -14,6 +15,19 @@ export const StyledVideoWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  // - Tinted overlay for video
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(51, 51, 51, 0.2);
+  }
 
   video {
     position: absolute;
@@ -68,5 +82,9 @@ export const StyledSignInLink = styled.a`
     padding: 8px 16px;
     background-color: #5a7d9e;
     border-radius: 5px;
+
+    &:hover {
+      background-color: #3b556d;
+    }
   }
 `;
