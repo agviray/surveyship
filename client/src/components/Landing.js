@@ -3,6 +3,7 @@ import {
   StyledWrapper,
   StyledVideoWrapper,
   StyledContent,
+  StyledSignInLink,
 } from './styles/Landing.styled';
 import oceanVideo from '../assets/calm-ocean-aerial.mp4';
 import shipSvg from '../assets/images/ship.svg';
@@ -23,6 +24,9 @@ const Landing = () => {
         <span>
           <img src={shipWave} alt="ship" />
         </span>
+        <StyledSignInLink href="/auth/google">
+          <span>Login with Google</span>
+        </StyledSignInLink>
       </StyledContent>
     </StyledWrapper>
   );

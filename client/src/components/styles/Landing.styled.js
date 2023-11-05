@@ -26,21 +26,24 @@ export const StyledVideoWrapper = styled.div`
     object-fit: cover;
   }
 `;
+
 export const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   position: relative;
   text-align: center;
   color: white;
 
   & > span {
     display: inline-block;
+    // - Headline
     &:nth-of-type(1) {
       font-size: 20px;
-      padding-bottom: 3rem;
     }
+    // - Ship logo
     &:nth-of-type(2) {
       width: 80px;
       font-size: 0;
@@ -55,5 +58,15 @@ export const StyledContent = styled.div`
         max-width: 100%;
       }
     }
+  }
+`;
+
+export const StyledSignInLink = styled.a`
+  margin-top: 2rem;
+  color: white;
+  span {
+    padding: 8px 16px;
+    background-color: #5a7d9e;
+    border-radius: 5px;
   }
 `;

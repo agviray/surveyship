@@ -12,11 +12,12 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href="/auth/google">Log with Google</a>
-          </li>
-        );
+        // return (
+        //   <li>
+        //     <a href="/auth/google">Log with Google</a>
+        //   </li>
+        // );
+        return;
       default:
         return [
           <li key="1">
