@@ -49,3 +49,23 @@ export const StyledToggler = styled.div`
     display: none;
   }
 `;
+
+export const StyledOverlay = styled.div`
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgb(239, 236, 236);
+  transition: all 0.2s ease-in-out;
+
+  &.isVisible {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba(239, 236, 236, 0.6);
+  }
+`;

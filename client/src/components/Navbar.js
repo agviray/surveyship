@@ -5,6 +5,7 @@ import {
   StyledNavbar,
   StyledLogo,
   StyledToggler,
+  StyledOverlay,
 } from './styles/Navbar.styled';
 import ship from '../assets/images/ship.svg';
 import NavMenu from './NavMenu';
@@ -24,6 +25,12 @@ const Navbar = ({ auth }) => {
         <StyledToggler onClick={() => setIsDisplayed(!isDisplayed)}>
           <img src={toggler} alt="Menu toggler" />
         </StyledToggler>
+        <StyledOverlay
+          className={isDisplayed ? 'isVisible' : ''}
+          onClick={() => {
+            return isDisplayed ? setIsDisplayed(false) : null;
+          }}
+        />
         <NavMenu isDisplayed={isDisplayed} />
       </div>
     </StyledNavbar>
