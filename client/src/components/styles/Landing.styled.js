@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-export const StyledWrapper = styled.div`
-  position: relative;
-  height: 100vh;
-  display: flex;
+export const StyledLanding = styled.div`
+  /* position: relative; */
+  /* height: 100vh; */
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+`;
+
+export const StyledHero = styled.div`
+  position: relative;
+  padding: 100px 0;
 `;
 
 export const StyledVideoWrapper = styled.div`
@@ -46,20 +51,22 @@ export const StyledContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   position: relative;
   text-align: center;
   color: white;
 
   & > span {
     display: inline-block;
-    // - Headline
+    // - Tagline
     &:nth-of-type(1) {
       font-size: 20px;
+      padding-bottom: 1rem;
     }
     // - Ship logo
     &:nth-of-type(2) {
       width: 80px;
+      padding-bottom: 1.5rem;
       font-size: 0;
       line-height: 0;
 
@@ -87,4 +94,8 @@ export const StyledSignInLink = styled.a`
       background-color: #3b556d;
     }
   }
+`;
+
+export const StyledContentCards = styled.div`
+  position: relative;
 `;

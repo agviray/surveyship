@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
   }
 
   ul {
