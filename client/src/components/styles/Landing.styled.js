@@ -98,4 +98,7 @@ export const StyledSignInLink = styled.a`
 
 export const StyledContentCards = styled.div`
   position: relative;
+  padding: 0 1.25rem;
 `;
+
+export const StyledContentCard = styled.div``;
