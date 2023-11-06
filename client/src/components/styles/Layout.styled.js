@@ -13,5 +13,6 @@ export const StyledLayout = styled.div`
     padding: 6rem 1.25rem;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: #f5f8fe;
   }
 `;

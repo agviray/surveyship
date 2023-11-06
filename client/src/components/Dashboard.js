@@ -9,7 +9,11 @@ const Dashboard = () => {
       <h1>Dashboard</h1>
       <SurveyCollection />
       <div className="fixed-action-btn">
-        <Link to="/surveys/new" className="btn-floating btn-large red">
+        <Link
+          to="/surveys/new"
+          className="btn-floating btn-large"
+          style={{ backgroundColor: '#3269FA' }}
+        >
           <i className="material-icons">add</i>
         </Link>
       </div>

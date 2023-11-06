@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     min-width: 300px;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #F5F8FE;
     
   }
 
