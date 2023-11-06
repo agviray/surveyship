@@ -10,6 +10,7 @@ import {
 import ship from '../assets/images/ship.svg';
 import NavMenu from './NavMenu';
 import toggler from '../assets/images/menu-toggler.svg';
+import closeToggler from '../assets/images/menu-close-toggler.svg';
 
 const Navbar = ({ auth }) => {
   const [isDisplayed, setIsDisplayed] = useState(false);
@@ -23,7 +24,11 @@ const Navbar = ({ auth }) => {
           </StyledLogo>
         </Link>
         <StyledToggler onClick={() => setIsDisplayed(!isDisplayed)}>
-          <img src={toggler} alt="Menu toggler" />
+          {isDisplayed ? (
+            <img src={closeToggler} alt="Close toggler" />
+          ) : (
+            <img src={toggler} alt="Open toggler" />
+          )}
         </StyledToggler>
         <StyledOverlay
           className={isDisplayed ? 'isVisible' : ''}

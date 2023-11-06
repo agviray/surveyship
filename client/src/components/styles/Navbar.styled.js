@@ -67,5 +67,9 @@ export const StyledOverlay = styled.div`
     visibility: visible;
     opacity: 1;
     background-color: rgba(239, 236, 236, 0.6);
+
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
   }
 `;

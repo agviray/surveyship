@@ -37,6 +37,9 @@ export const StyledNavMenu = styled.div`
     & > li {
       height: 56px;
       padding: 0 4rem 0 1rem;
+      &:last-child {
+        padding: 0;
+      }
       span {
         font-size: 16px;
         display: inline-block;
@@ -52,12 +55,26 @@ export const StyledNavMenu = styled.div`
       &:last-child {
         a {
           padding: 0;
+          // - Unsetting Materialize CSS hover style on a tag.
+          &:hover {
+            background-color: transparent;
+          }
+          & > span {
+            width: 100%;
+            padding: 0 4rem 0 1rem;
+            background-color: rgba(0, 0, 0, 0);
+            transition: all 0.3s ease;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.1);
+            }
+          }
         }
         @media screen and (min-width: 800px) {
-          span {
+          a > span {
+            width: unset;
+            padding: 0 1rem;
             display: inline-block;
             line-height: 56px;
-            padding: 0 1rem;
           }
         }
       }
