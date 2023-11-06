@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledNavbar = styled.nav`
+  position: relative;
   width: 100%;
   height: 56px;
   background-color: #5a7d9e;
@@ -12,29 +13,11 @@ export const StyledNavbar = styled.nav`
     justify-content: space-between;
     align-items: center;
     position: relative;
+    max-width: 2000px;
+    margin: 0 auto;
     height: 100%;
     padding: 0 10px;
     line-height: normal;
-  }
-
-  & ul {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    height: 100%;
-
-    // - Logout button
-    & > li:last-child {
-      a {
-        padding: 0;
-        span {
-          display: inline-block;
-          height: 56px;
-          line-height: 56px;
-          padding: 0 1rem;
-        }
-      }
-    }
   }
 `;
 
@@ -46,5 +29,23 @@ export const StyledLogo = styled.span`
 
   img {
     width: 100%;
+  }
+`;
+
+export const StyledToggler = styled.div`
+  display: inline-block;
+  width: 25px;
+  line-height: 0;
+  font-size: 0;
+  z-index: 1;
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+  }
+  @media screen and (min-width: 800px) {
+    display: none;
   }
 `;

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Payments from './Payments';
+import { StyledNavMenu } from './styles/NavMenu.styled';
 
-const NavMenu = ({ auth }) => {
+const NavMenu = ({ auth, isDisplayed }) => {
   // - Check auth prop to determine the Header UI to display.
   // - Different UI to display depending on user's current login status.
   const renderContent = () => {
@@ -20,7 +21,9 @@ const NavMenu = ({ auth }) => {
           <li key="1">
             <Payments />
           </li>,
-          <li key="2">Credits: {auth.credits}</li>,
+          <li key="2">
+            <span>Credits: {auth.credits}</span>
+          </li>,
           <li key="3">
             <a href="/api/logout">
               <span>Logout</span>
@@ -31,9 +34,9 @@ const NavMenu = ({ auth }) => {
   };
 
   return (
-    <div className="navMenuContainer">
+    <StyledNavMenu className={isDisplayed ? 'isDisplayed' : ''}>
       <ul>{renderContent()}</ul>
-    </div>
+    </StyledNavMenu>
   );
 };
 
