@@ -12,6 +12,7 @@ export const StyledLayout = styled.div`
   main {
     padding: 6rem 1.25rem;
     max-width: 1200px;
+    min-height: 100vh;
     margin: 0 auto;
     background-color: #f5f8fe;
   }
