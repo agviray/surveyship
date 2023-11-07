@@ -6,7 +6,7 @@ const FooterContent = () => {
     <StyledFooterContent>
       <span>
         Made with ☕ by{' '}
-        <a href="https://www.allanviray.com" target="_blank">
+        <a href="https://www.allanviray.com" target="_blank" rel="noreferrer">
           Allan Viray
         </a>
       </span>

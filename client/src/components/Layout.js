@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { connect } from 'react-redux';
 import GlobalStyles from './styles/GlobalStyles';
+import GlobalFonts from './styles/GlobalFonts';
 import { StyledLayout } from './styles/Layout.styled';
 import Navbar from './Navbar';
 import Landing from './Landing';
@@ -35,6 +36,7 @@ const Layout = ({ auth }) => {
   return (
     <>
       <GlobalStyles />
+      <GlobalFonts />
       <StyledLayout>{renderContent(auth)}</StyledLayout>
     </>
   );
