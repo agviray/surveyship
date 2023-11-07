@@ -51,7 +51,6 @@ export const StyledContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 1rem; */
   position: relative;
   text-align: center;
   color: white;
@@ -86,19 +85,86 @@ export const StyledSignInLink = styled.a`
   margin-top: 2rem;
   color: white;
   span {
-    padding: 8px 16px;
-    background-color: #5a7d9e;
+    padding: 1rem 1.5rem;
+    font-size: 18px;
+    background-color: rgba(50, 105, 250, 1);
     border-radius: 5px;
 
     &:hover {
-      background-color: #3b556d;
+      background-color: #254ec0;
     }
   }
 `;
 
 export const StyledContentCards = styled.div`
   position: relative;
-  padding: 0 1.25rem;
+  padding: 3rem 1.25rem;
+
+  @media screen and (min-width: 900px) {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 5rem 1.25rem;
+  }
 `;
 
-export const StyledContentCard = styled.div``;
+export const StyledContentCard = styled.div`
+  padding: 2rem 0;
+  max-width: 300px;
+  margin: 0 auto;
+
+  & > div {
+    // - Card heading container
+    &:nth-of-type(1) {
+      padding-bottom: 1.5rem;
+      // - Icon background circle.
+      & > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 3rem auto;
+        border-radius: 50%;
+        background-color: #c8d8ee;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+
+        // - Icon (image) container
+        span {
+          display: inline-block;
+          line-height: 0;
+          width: 50px;
+          font-size: 0;
+          img {
+            width: 50px;
+          }
+        }
+      }
+      h3 {
+        font-size: 28px;
+        text-align: center;
+      }
+    }
+    // - Card main content container
+    &:nth-of-type(2) {
+      & > p,
+      & > span {
+        text-align: center;
+        padding: 0 2rem;
+      }
+      & > span {
+        display: block;
+        padding-top: 1.75rem;
+        font-size: 13px;
+        color: #8f8f8f;
+      }
+    }
+  }
+`;
+
+export const StyledButtonContainer = styled.div`
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+`;
