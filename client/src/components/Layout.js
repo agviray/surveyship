@@ -5,6 +5,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import { StyledLayout } from './styles/Layout.styled';
 import Navbar from './Navbar';
 import Landing from './Landing';
+import FooterContent from './FooterContent';
 
 const Layout = ({ auth }) => {
   // - Render content depending on user's logged in status.
@@ -17,9 +18,17 @@ const Layout = ({ auth }) => {
         <main>
           <Outlet />
         </main>
+        <footer>
+          <FooterContent />
+        </footer>
       </>
     ) : (
-      <Landing />
+      <>
+        <Landing />
+        <footer>
+          <FooterContent />
+        </footer>
+      </>
     );
   };
 

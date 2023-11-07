@@ -11,6 +11,9 @@ export const StyledLanding = styled.div`
 export const StyledHero = styled.div`
   position: relative;
   padding: 100px 0;
+  @media screen and (min-width: 800px) {
+    padding: 200px 0;
+  }
 `;
 
 export const StyledVideoWrapper = styled.div`
