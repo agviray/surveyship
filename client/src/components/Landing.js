@@ -32,7 +32,7 @@ const landingContentCards = [
   {
     isLoginCard: false,
     heading: 'Ship It',
-    mainContent: 'Email the survey to your list of customers',
+    mainContent: 'Email the survey to your list of customers.',
     sideNote: '',
     icon: {
       img: shipIcon,
@@ -43,7 +43,7 @@ const landingContentCards = [
     isLoginCard: false,
     heading: 'Receive Feedback',
     mainContent:
-      'Immediately receive feedback from your customers as soon as they complete the survey',
+      'Immediately receive feedback from your customers as soon as they complete the survey.',
     sideNote: '',
     icon: {
       img: feedbackIcon,
@@ -54,7 +54,7 @@ const landingContentCards = [
     isLoginCard: true,
     heading: 'Try It Out',
     mainContent:
-      'Test out this application with a quick login via Google authentication. No sign up necessary--just click the Login button to start.',
+      'Test out this application with a quick login via Google authentication. No sign up necessary. Just click the Login button to start.',
     sideNote: '',
     icon: {
       img: loginIcon,

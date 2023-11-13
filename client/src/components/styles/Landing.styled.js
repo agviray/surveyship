@@ -102,6 +102,8 @@ export const StyledSignInLink = styled.a`
 export const StyledContentCards = styled.div`
   position: relative;
   padding: 3rem 1.25rem;
+  max-width: 2000px;
+  margin: 0 auto;
 
   @media screen and (min-width: 900px) {
     display: flex;
