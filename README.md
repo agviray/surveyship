@@ -9,6 +9,12 @@
 - The "Yes" or "No" counters will update once a recipient responds.
 - Create and send another survey!
 
+## Demo
+
+The website is deployed on Heroku. 
+
+- Click [here](https://whispering-meadow-38168-08fd7c2bff1c.herokuapp.com/) to view the website, or copy and past the following link in your browser: https://whispering-meadow-38168-08fd7c2bff1c.herokuapp.com/
+
 ## Built with
 
 - create-react-app
