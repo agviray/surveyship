@@ -46,6 +46,10 @@ export const StyledVideoWrapper = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    &::-webkit-media-controls-start-playback-button {
+      display: none !important;
+    }
   }
 `;
 
