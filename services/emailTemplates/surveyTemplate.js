@@ -14,21 +14,25 @@ module.exports = (survey) => {
         a {
           text-decoration: none;
         }
-
+        
         .container {
-          padding-top: 50px;
-          padding-bottom: 50px;
+          padding: 50px 0;
+          text-align: center;
         }
         
+        table {
+          margin: auto;
+          padding-top: 50px;
+          border-spacing: 1rem 0;
+        }
+
         .heading {
           padding-bottom: 2rem;
+          font-size: 25px;
         }
-        .btn-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 1.5rem;
-          padding-top: 3rem;
+
+        p, a, a > span {
+          font-size: 16px;
         }
         
         a, a > span {
@@ -63,14 +67,22 @@ module.exports = (survey) => {
       </style>
     </head>
     <body>
-      <div class="container" style="text-align: center">
+      <div class="container">
       <h3 class="heading">I'd like your input!</h3>
       <p class="detail">Please answer the following question:</p>
       <p class="question">${survey.body}</p>
-      <div class="btn-container">
-        <a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes"><span class="btn primary">Yes</span></a>
-        <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no"><span class="btn secondary">No</span></a>
-      </div>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+          <a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes"><span class="btn primary">Yes</span></a>
+            </td>
+          <td>
+          <a href="${keys.redirectDomain}/api/surveys/${survey.id}/no"><span class="btn secondary">No</span></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       </div>
     </body>
   </html>
