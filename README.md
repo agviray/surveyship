@@ -9,6 +9,11 @@
 - The "Yes" or "No" counters will update once a recipient responds.
 - Create and send another survey!
 
+## View Website
+
+You can view SurveyShip [here](https://whispering-meadow-38168-08fd7c2bff1c.herokuapp.com/), or just enter <em>https://whispering-meadow-38168-08fd7c2bff1c.herokuapp.com/</em> in your browser's address bar.
+
+
 ## Built with
 
 - create-react-app
